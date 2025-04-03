@@ -52,6 +52,8 @@ class MainWindow:
         for row in self.tree.get_children():
             self.tree.delete(row)
 
+        if not os.path.exists('config'):
+            os.makedirs('config')
         for filename in os.listdir("config"):
             if filename.endswith(".env"):
                 env_path = os.path.join("config", filename)
