@@ -4,7 +4,7 @@ from db_utils import create_env_file
 from db_utils import test_db_connection
 from tkinter import messagebox
 
-class ModalWindow:
+class CreateWindow:
     def __init__(self, parent, data_callback):
         self.parent = parent
         self.data_callback = data_callback
@@ -15,7 +15,7 @@ class ModalWindow:
         self.new_window.resizable(False, False)
         self.new_window.grab_set()
 
-        # Formulario
+        # Form
         self.label_host = tk.Label(self.new_window, text='Host:')
         self.label_host.pack(pady=5)
         self.entry_host = tk.Entry(self.new_window)
