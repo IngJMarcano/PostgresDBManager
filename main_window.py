@@ -2,6 +2,7 @@ import os
 import tkinter as tk
 from window_utils import set_window_dimensions
 from db_utils import test_db_connection
+from db_utils import reset_environment_variables
 from create_window import CreateWindow
 from tkinter import ttk, messagebox
 import psycopg2
@@ -70,6 +71,7 @@ class MainWindow:
                 tag = "conectado" if status_bool else "desconectado"
                 status = "Connected" if status_bool else "Disconnected"
                 self.tree.insert("", "end", values=(filename[:-4], db_name, db_host, status), tags=(tag,))
+                reset_environment_variables()
 
     def on_select(self, event):
         selected_item = self.tree.selection()

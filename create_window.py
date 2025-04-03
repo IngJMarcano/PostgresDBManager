@@ -72,12 +72,18 @@ class CreateWindow:
         }
         connection_success = test_db_connection(data['database'], data['user'], data['password'], data['host'], data['port'])
         if (not connection_success) :
-            messagebox.showinfo('Error', 'No se conecto con la Base de Datos.')
+            res = messagebox.askquestion('Error', 'No se conecto con la Base de Datos, ¿desea guardar el registro de todas formas?')
+            if (res == 'yes') : self.save_record(data)
+            
         else : 
-            create_env_file(data['identifier'], data['database'], data['user'], data['password'], data['host'], data['port'])
-            messagebox.showinfo('Éxito', 'Datos enviados exitosamente.')
-            self.data_callback(data)
-            self.close_window()
+            self.save_record(self, data)
+            
+    def save_record(self, data):
+        create_env_file(data['identifier'], data['database'], data['user'], data['password'], data['host'], data['port'])
+        messagebox.showinfo('Éxito', 'Datos enviados exitosamente.')
+        self.data_callback(data)
+        self.close_window()
+        
 
     def close_window(self):
         self.new_window.grab_release()

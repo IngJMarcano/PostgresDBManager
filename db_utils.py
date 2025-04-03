@@ -38,4 +38,3 @@ def reset_environment_variables():
     env_vars = list(os.environ.keys())
     for var in env_vars:
         del os.environ[var]
-    print('Todas las variables de entorno han sido eliminadas.')
